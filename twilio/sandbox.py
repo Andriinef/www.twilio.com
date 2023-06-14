@@ -9,13 +9,13 @@ https://cd/en-us
 
 def sending_sms(text="Wake up Neo...", receiver="+11100011100"):
     try:
-        account_sid = getenv("account_sid")
-        auth_token = getenv("auth_token")
+        account_sid = getenv("YOUR_ACCOUNT_SID")
+        auth_token = getenv("YOUR_AUTH_TOKEN")
 
         twilio_ = Client(account_sid, auth_token)
 
         message = twilio_.messages.create(
-            body=text, from_=getenv("sender"), to=receiver
+            body=text, from_=getenv("SENDER"), to=receiver
         )
         print(
             "The message was successfully sent.",
@@ -28,7 +28,7 @@ def sending_sms(text="Wake up Neo...", receiver="+11100011100"):
 
 def main():
     text = input("Please enter your message: ")
-    receiver = str(getenv("receiver"))
+    receiver = str(getenv("RECEIVER"))
     sending_sms(text=text, receiver=receiver)
 
 
